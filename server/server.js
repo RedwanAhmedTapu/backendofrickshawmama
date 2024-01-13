@@ -10,7 +10,7 @@ const server = http.createServer(app);
 const socketIo = require("socket.io");
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3000", // Your frontend origin
+    origin: "https://rickshawmama.vercel.app", // Your frontend origin
     methods: ["GET", "POST"],
   },
 });
@@ -29,7 +29,7 @@ const rickshawpullerData = require("../route/rickshawpullerdata");
 require("dotenv").config();
 require("../db/connection");
 
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin: "https://rickshawmama.vercel.app" }));
 app.use(express.json());
 
 // Websocket connection
@@ -135,6 +135,7 @@ app.post('/upload-Face-Image', upload.single('photo'), (req, res) => {
   } else {
     const imageUrl = `http://localhost:${process.env.PORT}/uploads/${req.file.filename}`;
     res.json({ imageUrl });
+    Rickshawpuller.image=imageUrl;
     // Assuming you have a Rickshawpuller instance, update the image field
     // Note: This needs to be adapted based on your actual application logic
     // For example, you need to retrieve the specific rickshawpuller instance before updating
