@@ -137,7 +137,6 @@ app.post('/upload-Face-Image', upload.single('photo'), (req, res) => {
   } else {
     const imageUrl = `${serverUrl}/uploads/${req.file.filename}`;
     res.json({ imageUrl });
-    Rickshawpuller.image=imageUrl;
     // Assuming you have a Rickshawpuller instance, update the image field
     // Note: This needs to be adapted based on your actual application logic
     // For example, you need to retrieve the specific rickshawpuller instance before updating
