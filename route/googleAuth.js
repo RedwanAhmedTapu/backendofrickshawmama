@@ -1,5 +1,5 @@
 const { User, Verification } = require("../models/register.model");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const randomstring = require("randomstring");
 
 const googleAuthentication = async (req, res) => {
