@@ -1,6 +1,6 @@
 const { User, Verification } = require("../models/register.model");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 require("dotenv").config();
 
 const userLog = async (req, res) => {
