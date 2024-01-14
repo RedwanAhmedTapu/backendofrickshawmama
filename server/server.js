@@ -31,6 +31,8 @@ require("../db/connection");
 
 app.use(cors({ origin: "https://rickshawmama.vercel.app" }));
 app.use(express.json());
+const serverUrl = "https://backendofrickshawmama.onrender.com";
+
 
 // Websocket connection
 io.on("connection", (socket) => {
@@ -133,7 +135,7 @@ app.post('/upload-Face-Image', upload.single('photo'), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: 'No file provided' });
   } else {
-    const imageUrl = `http://localhost:${process.env.PORT}/uploads/${req.file.filename}`;
+    const imageUrl = `${serverUrl}/uploads/${req.file.filename}`;
     res.json({ imageUrl });
     Rickshawpuller.image=imageUrl;
     // Assuming you have a Rickshawpuller instance, update the image field
@@ -147,7 +149,7 @@ app.post('/upload-Nid-Image', upload.single('photo'), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: 'No file provided' });
   } else {
-    const imageUrl = `http://localhost:${process.env.PORT}/uploads/${req.file.filename}`;
+    const imageUrl = `${serverUrl}/uploads/${req.file.filename}`;
     res.json({ imageUrl });
     // Assuming you have a Rickshawpuller instance, update the nid field
     // Note: This needs to be adapted based on your actual application logic
