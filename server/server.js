@@ -8,9 +8,14 @@ const path = require("path");
 const http = require("http");
 const server = http.createServer(app);
 const socketIo = require("socket.io");
+
+
+
+// const frontendOrigin=`http://localhost:3000`;
+const frontendOrigin="https://rickshawmama.vercel.app"
 const io = socketIo(server, {
   cors: {
-    origin: "https://rickshawmama.vercel.app", // Your frontend origin
+    origin:frontendOrigin, // Your frontend origin
     methods: ["GET", "POST"],
   },
 });
@@ -29,9 +34,10 @@ const rickshawpullerData = require("../route/rickshawpullerdata");
 require("dotenv").config();
 require("../db/connection");
 
-app.use(cors({ origin: "https://rickshawmama.vercel.app" }));
+app.use(cors({ origin: frontendOrigin }));
 app.use(express.json());
-const serverUrl = "https://backendofrickshawmama.onrender.com";
+const serverUrl= "https://backendofrickshawmama.onrender.com";
+// const serverUrl = "http://localhost:5001";
 
 
 // Websocket connection
@@ -123,7 +129,7 @@ app.post("/rickshawpuller/registration", rickshawpullerRegistration);
 app.get("/rickshawpuller/details", rickshawpullerData);
 
 const storage = multer.diskStorage({
-  destination: path.join(__dirname, "uploads"),
+  destination: path.join(__dirname,"uploads"),
   filename: (req, file, cb) => {
     cb(null, `${Date.now()}-${file.originalname}`);
   },
@@ -158,6 +164,7 @@ app.post('/upload-Nid-Image', upload.single('photo'), (req, res) => {
 });
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+console.log(__dirname);
 
 const port = process.env.PORT || 3000;
 
