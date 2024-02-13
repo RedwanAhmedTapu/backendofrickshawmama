@@ -12,7 +12,7 @@ const socketIo = require("socket.io");
 
 
 // const frontendOrigin=`http://localhost:3000`;
-const frontendOrigin="https://rickshawmama.vercel.app"
+const frontendOrigin="https://rickshawmama.vercel.app";
 const io = socketIo(server, {
   cors: {
     origin:frontendOrigin, // Your frontend origin
@@ -36,8 +36,8 @@ require("../db/connection");
 
 app.use(cors({ origin: frontendOrigin }));
 app.use(express.json());
-const serverUrl= "https://backendofrickshawmama.onrender.com";
-// const serverUrl = "http://localhost:5001";
+// const serverUrl= "https://backendofrickshawmama.onrender.com";
+const serverUrl = "http://localhost:5001";
 
 
 // Websocket connection
