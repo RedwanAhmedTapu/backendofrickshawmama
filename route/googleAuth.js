@@ -16,6 +16,7 @@ const googleAuthentication = async (req, res) => {
             { email },
             { $set: { isLoggedin: true } }
           );
+          await Verification.deleteOne({ email, code });
         } else {
           const newUser = new User({
             fname,
@@ -30,7 +31,7 @@ const googleAuthentication = async (req, res) => {
             code: verificationCode,
           });
           newVerification.save();
-          console.log(verificationCode)
+          console.log(verificationCode);
           await User.findOneAndUpdate(
             { email },
             { $set: { isLoggedin: true } }
