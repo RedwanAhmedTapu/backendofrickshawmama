@@ -36,8 +36,8 @@ require("../db/connection");
 
 app.use(cors({ origin: frontendOrigin }));
 app.use(express.json());
-// const serverUrl= "https://backendofrickshawmama.onrender.com";
-const serverUrl = "http://localhost:5001";
+const serverUrl= "https://backendofrickshawmama.onrender.com";
+// const serverUrl = "http://localhost:5001";
 
 
 // Websocket connection
