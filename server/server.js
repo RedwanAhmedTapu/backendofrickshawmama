@@ -15,7 +15,7 @@ const socketIo = require("socket.io");
 const frontendOrigin="https://rickshawmama.vercel.app";
 const io = socketIo(server, {
   cors: {
-    origin:"*", // Your frontend origin
+    origin:frontendOrigin, // Your frontend origin
     methods: ["GET", "POST"],
   },
 });
@@ -34,8 +34,7 @@ const rickshawpullerData = require("../route/rickshawpullerdata");
 require("dotenv").config();
 require("../db/connection");
 
-// app.use(cors({ origin: frontendOrigin }));
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: frontendOrigin }));
 
 app.use(express.json());
 const serverUrl= "https://backendofrickshawmama.onrender.com";
@@ -99,7 +98,7 @@ io.on("connection", (socket) => {
     }
   };
 
-  app.get("/getNearbyRickshawPullers", async (req, res) => {
+  app.post("/getNearbyRickshawPullers", async (req, res) => {
     const { lat, lon, socketId } = req.body;
 
     try {
