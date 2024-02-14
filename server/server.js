@@ -34,7 +34,9 @@ const rickshawpullerData = require("../route/rickshawpullerdata");
 require("dotenv").config();
 require("../db/connection");
 
-app.use(cors({ origin: frontendOrigin }));
+// app.use(cors({ origin: frontendOrigin }));
+app.use(cors({ origin: '*' }));
+
 app.use(express.json());
 const serverUrl= "https://backendofrickshawmama.onrender.com";
 // const serverUrl = "http://localhost:5001";
