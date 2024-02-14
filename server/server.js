@@ -97,7 +97,7 @@ io.on("connection", (socket) => {
     }
   };
 
-  app.post("/getNearbyRickshawPullers", async (req, res) => {
+  app.get("/getNearbyRickshawPullers", async (req, res) => {
     const { lat, lon, socketId } = req.body;
 
     try {
