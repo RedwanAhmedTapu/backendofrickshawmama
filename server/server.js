@@ -12,7 +12,7 @@ const socketIo = require("socket.io");
 
 
 // const frontendOrigin=`http://localhost:3000`;
-const frontendOrigin="https://rickshawmama.vercel.app";
+const frontendOrigin="https://rickshawmama.vercel.app/#";
 const io = socketIo(server, {
   cors: {
     origin:frontendOrigin, // Your frontend origin
