@@ -15,7 +15,7 @@ const socketIo = require("socket.io");
 const frontendOrigin="https://rickshawmama.vercel.app";
 const io = socketIo(server, {
   cors: {
-    origin:frontendOrigin, // Your frontend origin
+    origin:"*", // Your frontend origin
     methods: ["GET", "POST"],
   },
 });
