@@ -27,7 +27,7 @@ const login = require("../route/userlogin");
 const rickshawpullerlogin = require("../route/rickshawmama.login");
 const googleAuthentication = require("../route/googleAuth");
 const verifyEmail = require("../route/email.verification");
-const googleAuthverfication = require("../route/googleAuth.verfication");
+// const googleAuthverfication = require("../route/googleAuth.verfication");
 const rickshawpullerRegistration = require("../route/rickshawpuller.registration");
 const rickshawpullerData = require("../route/rickshawpullerdata");
 
@@ -35,7 +35,6 @@ require("dotenv").config();
 require("../db/connection");
 
 app.use(cors({ origin: frontendOrigin }));
-
 app.use(express.json());
 const serverUrl= "https://backendofrickshawmama.onrender.com";
 // const serverUrl = "http://localhost:5001";
@@ -99,7 +98,7 @@ io.on("connection", (socket) => {
   };
 
   app.post("/getNearbyRickshawPullers", async (req, res) => {
-    const { lat, lon, socketId } = req.body;
+    const { lat, lon } = req.body;
 
     try {
       console.log(`Received request for nearby pullers at coordinates: ${lat}, ${lon}`);
@@ -125,7 +124,7 @@ app.post("/user/login", login);
 app.post("/user/rickshawpullerlogin", rickshawpullerlogin);
 app.post("/auth/registration", googleAuthentication);
 app.post("/verify-email", verifyEmail);
-app.post("/auth/googleAuth-verfication", googleAuthverfication);
+// app.post("/auth/googleAuth-verfication", googleAuthverfication);
 app.post("/rickshawpuller/registration", rickshawpullerRegistration);
 app.get("/rickshawpuller/details", rickshawpullerData);
 
