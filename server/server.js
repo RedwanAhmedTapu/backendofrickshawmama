@@ -8,8 +8,12 @@ const path = require("path");
 const http = require("http");
 const server = http.createServer(app);
 
+
+require("dotenv").config();
+
 // const frontendOrigin = `http://localhost:3000`;
-const frontendOrigin="https://rickshawmama.vercel.app";
+const frontendOrigin=process.env.ORIGIN;
+console.log(frontendOrigin);
 
 
 const Rickshawpuller = require("../models/rickshawpuller.model");
@@ -29,7 +33,7 @@ require("../db/connection");
 
 app.use(cors({ origin: frontendOrigin }));
 app.use(express.json());
-const serverUrl = "https://backendofrickshawmama.onrender.com";
+const serverUrl = process.env.SERVER_URL;
 // const serverUrl = "http://localhost:5001";
 
 // Websocket connection

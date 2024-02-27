@@ -1,7 +1,9 @@
 const { OAuth2Client } = require('google-auth-library');
 const { User } = require("../models/register.model");
 
-const client = new OAuth2Client('993913645019-gjbsgomsu7sgo0bv7rkas1d9irgp2upv.apps.googleusercontent.com'); // Replace with your actual Google OAuth client ID
+
+console.log(process.env.CLIENTID)
+const client = new OAuth2Client(process.env.CLIENTID); // Replace with your actual Google OAuth client ID
 
 const googleAuthentication = async (req, res) => {
   try {
@@ -11,7 +13,7 @@ const googleAuthentication = async (req, res) => {
     // Verify Google token
     const ticket = await client.verifyIdToken({
       idToken: token,
-      audience: '993913645019-gjbsgomsu7sgo0bv7rkas1d9irgp2upv.apps.googleusercontent.com', // Replace with your actual Google OAuth client ID
+      audience: process.env.CLIENTID, // Replace with your actual Google OAuth client ID
     });
     
     const { given_name, family_name, email } = ticket.getPayload();
