@@ -28,6 +28,7 @@ const rickshawpullerRegistration = require("../route/rickshawpuller.registration
 const rickshawpullerData = require("../route/rickshawpullerdata");
 const rickshawpullerLocationUpdate=require("../route/rickshawpuller.update.location");
 
+
 require("dotenv").config();
 require("../db/connection");
 

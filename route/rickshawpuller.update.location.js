@@ -14,6 +14,9 @@ const updateRickshawpullerLocation = async (req, res) => {
         $set: {
           "location.coordinates": [lon, lat],
         },
+        $push: {
+          route: { type: "Point", coordinates: [lat, lon] } // Push an object with type and coordinates
+        }
       });
 
       console.log("Rickshawpuller location updated");

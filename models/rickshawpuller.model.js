@@ -29,7 +29,7 @@ const rickshawpullerSchema = new mongoose.Schema({
         },
         coordinates: {
           type: [Number],
-        
+          default: [], // Provide a default value
         },
       },
     ],
@@ -37,6 +37,7 @@ const rickshawpullerSchema = new mongoose.Schema({
   },
 });
 
+// Indexing for GeoSpatial Queries
 rickshawpullerSchema.index({ location: "2dsphere" });
 
 // Create the model from the schema
