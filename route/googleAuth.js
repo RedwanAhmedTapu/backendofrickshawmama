@@ -8,7 +8,6 @@ const client = new OAuth2Client(process.env.CLIENTID); // Replace with your actu
 const googleAuthentication = async (req, res) => {
   try {
     const { token } = req.body;
-    console.log(token);
     
     // Verify Google token
     const ticket = await client.verifyIdToken({

@@ -13,7 +13,7 @@ require("dotenv").config();
 
 // const frontendOrigin = `http://localhost:3000`;
 const frontendOrigin=process.env.ORIGIN;
-console.log(frontendOrigin);
+// console.log(frontendOrigin);
 
 
 const Rickshawpuller = require("../models/rickshawpuller.model");
@@ -27,6 +27,7 @@ const verifyEmail = require("../route/email.verification");
 const rickshawpullerRegistration = require("../route/rickshawpuller.registration");
 const rickshawpullerData = require("../route/rickshawpullerdata");
 const rickshawpullerLocationUpdate=require("../route/rickshawpuller.update.location");
+const rickshawPullerROuteDelete=require("../route/rickshawpuller.route.delete");
 
 
 require("dotenv").config();
@@ -86,6 +87,7 @@ app.post("/verify-email", verifyEmail);
 // app.post("/auth/googleAuth-verfication", googleAuthverfication);
 app.post("/rickshawpuller/registration", rickshawpullerRegistration);
 app.get("/rickshawpuller/details", rickshawpullerData);
+app.delete("/rickshawpuller/route-delete/:nid", rickshawPullerROuteDelete);
 app.put("/rickshawpuller-update-location", rickshawpullerLocationUpdate);
 
 const storage = multer.diskStorage({
@@ -124,7 +126,7 @@ app.post("/upload-Nid-Image", upload.single("photo"), (req, res) => {
 });
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-console.log(__dirname);
+// console.log(__dirname);
 
 const port = process.env.PORT || 3000;
 
