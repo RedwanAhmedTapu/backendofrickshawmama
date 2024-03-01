@@ -28,6 +28,7 @@ const rickshawpullerData = require("../route/rickshawpullerdata");
 const rickshawpullerLocationUpdate = require("../route/rickshawpuller.update.location");
 const rickshawPullerROuteDelete = require("../route/rickshawpuller.route.delete");
 const rickshawmamalocationSharingPermission = require("../route/rickshawmama.permit.location");
+const contact=require("../route/contact");
 
 require("../db/connection");
 
@@ -117,6 +118,7 @@ app.post("/user/login", login);
 app.post("/user/rickshawpullerlogin", rickshawpullerlogin);
 app.post("/auth/registration", googleAuthentication);
 app.post("/verify-email", verifyEmail);
+app.post("/contact", contact);
 // app.post("/auth/googleAuth-verfication", googleAuthverfication);
 app.post("/rickshawpuller/registration", rickshawpullerRegistration);
 app.get("/rickshawpuller/details", rickshawpullerData);
@@ -165,7 +167,7 @@ app.post("/upload-Nid-Image", upload.single("photo"), (req, res) => {
 });
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-// console.log(__dirname);
+console.log(__dirname);
 
 const port = process.env.PORT || 3000;
 
