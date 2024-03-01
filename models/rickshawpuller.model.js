@@ -35,6 +35,10 @@ const rickshawpullerSchema = new mongoose.Schema({
     ],
     default: [],
   },
+  ispermitted:{
+    type:Boolean,
+    default:false
+  }
 });
 
 // Indexing for GeoSpatial Queries

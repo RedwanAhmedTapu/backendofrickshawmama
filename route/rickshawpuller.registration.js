@@ -32,6 +32,7 @@ const rickshawpuller = async (req, res) => {
         type: 'Point',
         coordinates: [lon,lat],
       },
+      ispermitted:false
     });
 
     // Save the data to the database
