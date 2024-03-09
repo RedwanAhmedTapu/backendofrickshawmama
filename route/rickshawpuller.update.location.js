@@ -13,10 +13,10 @@ const updateRickshawpullerLocation = async (req, res) => {
       await Rickshawpuller.findByIdAndUpdate(foundRickshawpuller._id, {
         $set: {
           "location.coordinates": [lon, lat],
+        },
+        $push: {
+          route: { type: "Point", coordinates: [lat, lon] } // Push an object with type and coordinates
         }
-        // $push: {
-        //   route: { type: "Point", coordinates: [lat, lon] } // Push an object with type and coordinates
-        // }
       });
 
       console.log("Rickshawpuller location updated");
